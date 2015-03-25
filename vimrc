@@ -63,9 +63,6 @@ map <leader>p :setlocal paste!<cr>
 " shortcut to toggle line numbers
 map <leader>ln :setlocal number!<cr>
 
-" move this line up to the end of the previous line
-map <leader>k 0dwi<BS><Esc>l
-
 " prev/next buffer with leader q/w
 nmap <leader>q :bp<CR>
 nmap <leader>w :bn<CR>
