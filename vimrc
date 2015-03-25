@@ -1,13 +1,5 @@
-" use vundle for plugin management
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/L9'
-Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'bling/vim-airline'
-call vundle#end()
-
+" use pathogen for plugin management
+execute pathogen#infect()
 
 " GENERAL SETTINGS
 set nocompatible           " no vi compatibility
