@@ -63,9 +63,8 @@ map <leader>p :setlocal paste!<cr>
 " shortcut to toggle line numbers
 map <leader>ln :setlocal number!<cr>
 
-" prev/next buffer with leader q/w
-nmap <leader>q :bp<CR>
-nmap <leader>w :bn<CR>
+" switch windows with leader-w
+nmap <leader>w <c-w><c-w>
 
 " FuzzyFind buffer with leader b
 nmap <leader>b :FufBuffer<cr>
