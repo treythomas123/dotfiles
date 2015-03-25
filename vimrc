@@ -72,9 +72,8 @@ nmap <leader>b :FufBuffer<cr>
 " FuzzyFind file with leader f
 nmap <leader>f :FufFile<cr>
 
-" Open NERDTree with leader nt
-nmap <leader>nt :NERDTree<cr>
-
+" Find and replace current word with leader-r
+nmap <leader>r :%s/\<<c-r><c-w>\>/
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10
