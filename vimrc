@@ -1,4 +1,5 @@
 " use pathogen for plugin management
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " GENERAL SETTINGS
@@ -20,12 +21,12 @@ set laststatus=2           " status line always on
 set number                 " show line numbers
 colorscheme Tomorrow
 hi LineNr ctermfg=252
-hi NonText ctermfg=252
 hi VertSplit ctermfg=252 ctermbg=254
-hi StatusLine ctermfg=252 ctermbg=0
-hi Search ctermbg=253
+hi Search ctermbg=254
 hi link xmlEndTag Function
 hi link xmlAttrib Statement
+hi clear swiftKeywords
+hi link swiftKeywords Function
 
 " SEARCH BEHAVIOR
 set incsearch              " start searching before pressing enter
@@ -74,6 +75,11 @@ nmap <leader>f :FufFile<cr>
 
 " Find and replace current word with leader-r
 nmap <leader>r :%s/\<<c-r><c-w>\>/
+
+" Echo the highlight class under the cursor
+map <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10
