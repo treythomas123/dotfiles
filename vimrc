@@ -19,6 +19,7 @@ set writebackup            " use backup when saving files
 syntax on                  " syntax highlighting
 set laststatus=2           " status line always on
 set number                 " show line numbers
+let g:airline_powerline_fonts = 1
 colorscheme Tomorrow
 hi LineNr ctermfg=252
 hi VertSplit ctermfg=252 ctermbg=254
@@ -27,6 +28,8 @@ hi link xmlEndTag Function
 hi link xmlAttrib Statement
 hi clear swiftKeywords
 hi link swiftKeywords Function
+hi link sqlKeyword Function
+hi link sqlStatement Function
 
 " SEARCH BEHAVIOR
 set incsearch              " start searching before pressing enter
