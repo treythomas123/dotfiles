@@ -14,6 +14,7 @@ set autoread               " automatically reload files when changed outside vim
 set nobackup               " don't create backup files while editing
 set noswapfile             " don't create swap files while editing
 set writebackup            " use backup when saving files
+set hidden                 " Allow switching buffers without saving
 
 " INTERFACE APPEARANCE
 syntax on                  " syntax highlighting
@@ -40,7 +41,10 @@ set expandtab
 set autoindent
 set smartindent
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
+set listchars+=tab:⟶\ ,eol:\ 
+set list
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 
@@ -70,6 +74,9 @@ map <leader>ln :setlocal number!<cr>
 " switch windows with leader-w
 nmap <leader>w <c-w><c-w>
 
+" close window with leader-q
+nmap <leader>q <c-w>q
+
 " FuzzyFind buffer with leader b
 nmap <leader>b :FufBuffer<cr>
 
@@ -83,6 +90,9 @@ nmap <leader>r :%s/\<<c-r><c-w>\>/
 map <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Reload and edit .vimrc
+nmap <silent> <leader>ev :so $MYVIMRC\|:e $MYVIMRC<CR>
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10
