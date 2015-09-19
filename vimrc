@@ -56,8 +56,9 @@ autocmd FileType ruby compiler ruby
 
 " KEY MAPPINGS
 
-" map ; to : in normal mode so I don't have to hold down shift
-nmap ; :
+" swap the functions of ; and :, because I use : more often
+nnoremap ; :
+nnoremap : ;
 
 " use , as <leader> instead of \
 let mapleader = ","
