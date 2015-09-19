@@ -57,8 +57,8 @@ autocmd FileType ruby compiler ruby
 " KEY MAPPINGS
 
 " swap the functions of ; and :, because I use : more often
-nnoremap ; :
-nnoremap : ;
+noremap ; :
+noremap : ;
 
 " use , as <leader> instead of \
 let mapleader = ","
@@ -67,33 +67,33 @@ let mapleader = ","
 nnoremap <cr> :noh<cr>
 
 " shortcut to turn on paste mode
-map <leader>p :setlocal paste!<cr>
+noremap <leader>p :setlocal paste!<cr>
 
 " shortcut to toggle line numbers
-map <leader>ln :setlocal number!<cr>
+noremap <leader>ln :setlocal number!<cr>
 
 " switch windows with leader-w
-nmap <leader>w <c-w><c-w>
+nnoremap <leader>w <c-w><c-w>
 
 " close window with leader-q
-nmap <leader>q <c-w>q
+nnoremap <leader>q <c-w>q
 
 " FuzzyFind buffer with leader b
-nmap <leader>b :FufBuffer<cr>
+nnoremap <leader>b :FufBuffer<cr>
 
 " FuzzyFind file with leader f
-nmap <leader>f :FufFile<cr>
+nnoremap <leader>f :FufFile<cr>
 
 " Find and replace current word with leader-r
-nmap <leader>r :%s/\<<c-r><c-w>\>/
+nnoremap <leader>r :%s/\<<c-r><c-w>\>/
 
 " Echo the highlight class under the cursor
-map <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Reload and edit .vimrc
-nmap <silent> <leader>ev :so $MYVIMRC\|:e $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :so $MYVIMRC\|:e $MYVIMRC<CR>
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10
