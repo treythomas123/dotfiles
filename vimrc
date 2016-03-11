@@ -78,22 +78,16 @@ nnoremap <leader>w <c-w><c-w>
 " close window with leader-q
 nnoremap <leader>q <c-w>q
 
-" FuzzyFind buffer with leader b
-nnoremap <leader>b :FufBuffer<cr>
+" CtrlP buffer with leader b
+nnoremap <leader>b :CtrlPBuffer<cr>
 
-" FuzzyFind file with leader f
-nnoremap <leader>f :FufFile<cr>
-
-" Find and replace current word with leader-r
-nnoremap <leader>r :%s/\<<c-r><c-w>\>/
+" Ctrlp files with leader f
+nnoremap <leader>f :CtrlP<cr>
 
 " Echo the highlight class under the cursor
 nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Reload and edit .vimrc
-nnoremap <silent> <leader>ev :so $MYVIMRC\|:e $MYVIMRC<CR>
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10

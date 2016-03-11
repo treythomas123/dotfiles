@@ -1,18 +1,21 @@
 # vimrc
 My Vim configuration file (.vimrc)
 
-I have this repository set up in `~/vimrc`, with a symlink mapping `~/.vimrc -> ~/vimrc/vimrc`
+I use [pathogen](https://github.com/tpope/vim-pathogen) for loading plugins.
 
-I also use the following plugins:
+### Plugins
+* [airline](https://github.com/vim-airline/vim-airline)
+* [fugitive](https://github.com/tpope/vim-fugitive)
+* [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
 
-* [tpope/vim-pathogen](https://github.com/tpope/vim-pathogen)
-* [vim-scripts/FuzzyFinder](https://github.com/vim-scripts/FuzzyFinder) (requires [vim-scripts/L9](https://github.com/vim-scripts/L9))
-* [bling/vim-airline](https://github.com/bling/vim-airline)
-* [chriskempson/tomorrow-theme](https://github.com/chriskempson/tomorrow-theme/tree/master/vim) (theme)
+### Colors
+* [Tomorrow](https://github.com/chriskempson/vim-tomorrow-theme/blob/master/colors/Tomorrow.vim)
 
-You can backup your `.vimrc` and install mine using the following commands (on Mac/Linux):
+You can backup your `.vimrc` and `.vim` folder and install mine using the following commands (on Mac/Linux):
 ```
   mv ~/.vimrc ~/.vimrc_backup
+  mv ~/.vim ~/.vim_backup
   git clone https://github.com/treythomas123/vimrc.git ~/vimrc
   ln -s ~/vimrc/vimrc ~/.vimrc
+  ln -s ~/vimrc/vim ~/.vim
 ```
