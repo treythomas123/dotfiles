@@ -15,6 +15,7 @@ set nobackup               " don't create backup files while editing
 set noswapfile             " don't create swap files while editing
 set writebackup            " use backup when saving files
 set hidden                 " Allow switching buffers without saving
+let g:ctrlp_working_path_mode = 0 " search in pwd instead of file dir
 
 " INTERFACE APPEARANCE
 syntax on                  " syntax highlighting
@@ -58,7 +59,7 @@ autocmd FileType ruby compiler ruby
 
 " swap the functions of ; and :, because I use : more often
 noremap ; :
-noremap : ;
+noremap <Space> ;
 
 " use , as <leader> instead of \
 let mapleader = ","
