@@ -20,6 +20,7 @@ In order for the airline plugin to look right, you'll need to use a font from [p
 * [airline](https://github.com/vim-airline/vim-airline)
 * [fugitive](https://github.com/tpope/vim-fugitive)
 * [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
+* [syntastic](https://github.com/scrooloose/syntastic)
 * [schlepp](https://github.com/zirrostig/vim-schlepp)
 
 ### Colors

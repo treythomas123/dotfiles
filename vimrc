@@ -16,6 +16,8 @@ set noswapfile             " don't create swap files while editing
 set writebackup            " use backup when saving files
 set hidden                 " Allow switching buffers without saving
 let g:ctrlp_working_path_mode = 0 " search in pwd instead of file dir
+let g:ctrlp_show_hidden = 1 " include dotfiles in ctrlp results
+let g:syntastic_javascript_checkers = ['eslint', 'jshint'] " lint javascript
 
 " INTERFACE APPEARANCE
 syntax on                  " syntax highlighting
