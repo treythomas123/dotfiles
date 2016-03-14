@@ -19,6 +19,9 @@ source $ZSH/oh-my-zsh.sh
 
 set -o vi
 alias vim="nvim"
+alias vi="nvim"
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-PROMPT="%~ $ "
+startGrey=$(echo -e "\e[38;2;140;140;140m")
+stopColor=$(echo -e "\e[0m")
+PROMPT="%{$startGrey%}%~ \$ %{$stopColor%}"

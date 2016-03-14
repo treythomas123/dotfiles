@@ -2,7 +2,6 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-set nocompatible           " no vi compatibility
 filetype on                " enable filetype detection
 filetype indent on         " enable filetype-specific indenting
 filetype plugin on         " enable filetype-specific plugins
@@ -15,40 +14,22 @@ set noswapfile             " don't create swap files while editing
 set writebackup            " use backup when saving files
 set hidden                 " Allow switching buffers without saving
 
-" Turn off bells
-set noerrorbells visualbell t_vb=
-
 " Search
 set incsearch              " start searching before pressing enter
 set hlsearch               " highlight search results
 set ignorecase             " case-insensitive search
 set smartcase              " capital letters trigger case-sensitive search
 
-" use , as <leader> instead of \
-let mapleader = ","
-
-" CtrlP 
-let g:ctrlp_working_path_mode = 0 " search in pwd instead of file dir
-let g:ctrlp_show_hidden = 1 " include dotfiles in ctrlp results
-set wildignore+=*/.npm/*,*/node_modules/*
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-
-" Syntastic
-"let g:syntastic_javascript_checkers = ['eslint', 'jshint'] " lint javascript
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-
-
 " Appearance
 syntax on                  " syntax highlighting
-set laststatus=2           " status line always on
 set number                 " show line numbers
 let g:airline_powerline_fonts = 1
 colorscheme lucius
 LuciusDarkHighContrast
-hi LineNr ctermfg=240 ctermbg=236
-hi VertSplit ctermfg=233 ctermbg=236
+hi LineNr guifg=#666666 guibg=234
+hi VertSplit guifg=#666666 guibg=236
+hi Search guibg=#005faf
+hi Pmenu guibg=#555555
 
 " Indent
 set expandtab
@@ -57,11 +38,11 @@ set smartindent
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set listchars+=tab:⟶\ ,eol:\ 
+set listchars=tab:⟶\ ,eol:\ 
 set list
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-autocmd Filetype eruby setlocal ts=2 sw=2 expandtab
 
+" use , as <leader> instead of \
+let mapleader = ","
 
 " Allow ; for :, and use space for ;
 noremap ; :
@@ -97,3 +78,22 @@ augroup FastEscape
     au InsertEnter * set timeoutlen=0
     au InsertLeave * set timeoutlen=1000
 augroup END
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>".deoplete#mappings#close_popup() : "<Tab>"
+
+" tern
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" CtrlP
+let g:ctrlp_working_path_mode = 0 " search in pwd instead of file dir
+let g:ctrlp_show_hidden = 1 " include dotfiles in ctrlp results
+set wildignore+=*/.npm/*,*/node_modules/*
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+
+" Neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
+let g:neomake_open_list = 2
