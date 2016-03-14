@@ -1,41 +1,39 @@
-[submodule "home/.config/n/bundle/fugitive"]
-	path = home/.config/n/bundle/fugitive
+[submodule "home/.config/nvim/bundle/fugitive"]
+	path = home/.config/nvim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "home/.config/n/bundle/airline"]
-	path = home/.config/n/bundle/airline
+[submodule "home/.config/nvim/bundle/airline"]
+	path = home/.config/nvim/bundle/airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "home/.config/n/bundle/airline-themes"]
-	path = home/.config/n/bundle/airline-themes
+[submodule "home/.config/nvim/bundle/airline-themes"]
+	path = home/.config/nvim/bundle/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "home/.config/n/bundle/ctrlp"]
-	path = home/.config/n/bundle/ctrlp
+[submodule "home/.config/nvim/bundle/ctrlp"]
+	path = home/.config/nvim/bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
-[submodule "home/.config/n/bundle/schlepp"]
-	path = home/.config/n/bundle/schlepp
+[submodule "home/.config/nvim/bundle/schlepp"]
+	path = home/.config/nvim/bundle/schlepp
 	url = https://github.com/zirrostig/vim-schlepp
-[submodule "home/.config/n/bundle/syntastic"]
-	path = home/.config/n/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "home/.config/n/bundle/surround"]
-	path = home/.config/n/bundle/surround
+	ignore = untracked
+[submodule "home/.config/nvim/bundle/surround"]
+	path = home/.config/nvim/bundle/surround
 	url = https://github.com/tpope/vim-surround
-[submodule "home/.config/n/bundle/repeat"]
-	path = home/.config/n/bundle/repeat
+[submodule "home/.config/nvim/bundle/repeat"]
+	path = home/.config/nvim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat
-[submodule "home/.config/n/bundle/abolish"]
-	path = home/.config/n/bundle/abolish
+[submodule "home/.config/nvim/bundle/abolish"]
+	path = home/.config/nvim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish
-[submodule "home/.config/n/bundle/commentary"]
-	path = home/.config/n/bundle/commentary
+[submodule "home/.config/nvim/bundle/commentary"]
+	path = home/.config/nvim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "home/.config/n/bundle/lucius"]
-	path = home/.config/n/bundle/lucius
+[submodule "home/.config/nvim/bundle/lucius"]
+	path = home/.config/nvim/bundle/lucius
 	url = https://github.com/jonathanfilip/vim-lucius
-[submodule "home/.config/n/bundle/colorizer"]
-	path = home/.config/n/bundle/colorizer
+[submodule "home/.config/nvim/bundle/colorizer"]
+	path = home/.config/nvim/bundle/colorizer
 	url = https://github.com/lilydjwg/colorizer
-[submodule "home/.config/n/bundle/neomake"]
-	path = home/.config/n/bundle/neomake
+[submodule "home/.config/nvim/bundle/neomake"]
+	path = home/.config/nvim/bundle/neomake
 	url = https://github.com/benekastah/neomake
 [submodule "home/.config/nvim/bundle/deoplete.nvim"]
 	path = home/.config/nvim/bundle/deoplete.nvim
