@@ -1,6 +1,7 @@
 " use pathogen for plugin management
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+execute pathogen#helptags()
 
 filetype on                " enable filetype detection
 filetype indent on         " enable filetype-specific indenting
