@@ -96,8 +96,7 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 
 " Neomake
 autocmd! BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
-let g:neomake_open_list = 2
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Schelpp
 vmap <unique> <up>    <Plug>SchleppUp
