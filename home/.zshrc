@@ -25,7 +25,6 @@ set -o vi
 alias vi=/usr/bin/vim 
 alias vim="nvim" 
 export TERM=xterm-256color 
-export NVIM_TUI_ENABLE_TRUE_COLOR=1 
  
 # prompt
 

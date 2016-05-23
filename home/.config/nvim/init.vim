@@ -25,6 +25,7 @@ set smartcase              " capital letters trigger case-sensitive search
 syntax on                  " syntax highlighting
 set number                 " show line numbers
 let g:airline_powerline_fonts = 1
+set termguicolors
 colorscheme lucius
 LuciusDarkHighContrast
 hi LineNr guifg=#666666 guibg=234
