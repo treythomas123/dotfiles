@@ -88,12 +88,9 @@ inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>".deoplete#mappings#close_po
 " tern
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
-" CtrlP
-let g:ctrlp_working_path_mode = 0 " search in pwd instead of file dir
-let g:ctrlp_show_hidden = 1 " include dotfiles in ctrlp results
-set wildignore+=*/.npm/*,*/node_modules/*
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
+" FuzzyFinder
+nnoremap <leader>f :FufFile<cr>
+nnoremap <leader>b :FufBuffer<cr>
 
 " Neomake
 autocmd! BufWritePost * Neomake
