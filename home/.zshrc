@@ -22,7 +22,8 @@ NODE_PATH="$HOME/.npm-packages/lib/node_modules:$NODE_PATH"
 # vim 
  
 set -o vi  
-alias vi=/usr/bin/vim 
+alias v="nvim"
+alias vi="nvim"
 alias vim="nvim" 
 export TERM=xterm-256color 
  
