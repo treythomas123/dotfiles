@@ -14,11 +14,11 @@ source $ZSH/oh-my-zsh.sh
  
 # node 
 
-path=( $HOME/node/bin $path ) 
-path=( $HOME/.npm-packages/bin $path ) 
-NODE_PATH="$HOME/.npm-packages/lib/node_modules:$NODE_PATH" 
 . ~/.nvm/nvm.sh
- 
+path=( $HOME/.npm-packages/bin $path ) 
+path=( ./node_modules/.bin $path )
+NODE_PATH="$HOME/.npm-packages/lib/node_modules:$NODE_PATH" 
+
 # vim 
  
 set -o vi  
