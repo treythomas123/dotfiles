@@ -88,9 +88,9 @@ inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>".deoplete#mappings#close_po
 " tern
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
-" FuzzyFinder
-nnoremap <leader>f :FufFile<cr>
-nnoremap <leader>b :FufBuffer<cr>
+" Unite
+nnoremap <leader>f :Unite file -start-insert<cr>
+nnoremap <leader>b :Unite buffer -quick-match<cr>
 
 " Neomake
 autocmd! BufWritePost * Neomake

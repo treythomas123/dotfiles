@@ -44,11 +44,6 @@
 [submodule "home/.config/nvim/bundle/vim-javascript"]
 	path = home/.config/nvim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
-[submodule "home/.config/nvim/bundle/FuzzyFinder"]
-	path = home/.config/nvim/bundle/FuzzyFinder
-	url = https://github.com/vim-scripts/FuzzyFinder
-    ignore = dirty
-[submodule "home/.config/nvim/bundle/L9"]
-	path = home/.config/nvim/bundle/L9
-	url = https://github.com/vim-scripts/L9
-    ignore = dirty
+[submodule "home/.config/nvim/bundle/unite.vim"]
+	path = home/.config/nvim/bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim
