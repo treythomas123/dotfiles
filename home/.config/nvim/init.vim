@@ -46,9 +46,14 @@ set list
 " use , as <leader> instead of \
 let mapleader = ","
 
-" Allow ; for :, and use space for ;
+" Allow ; for :
 noremap ; :
-noremap <Space> ;
+
+" use apostrophe for next in f/t search
+noremap ' ;
+
+" run q macro with space
+noremap <space> @q
 
 " press enter in normal mode to clear search highlighting
 nnoremap <silent> <esc> :noh<cr><esc>
