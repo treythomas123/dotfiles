@@ -40,7 +40,7 @@ set smartindent
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set listchars=tab:⟶\ ,eol:\ 
+set listchars=tab:⟶\ 
 set list
 
 " use , as <leader> instead of \
