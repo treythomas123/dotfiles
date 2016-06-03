@@ -26,6 +26,10 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim" 
 export TERM=xterm-256color 
+
+# git
+
+alias gs="git status"
  
 # prompt
 
