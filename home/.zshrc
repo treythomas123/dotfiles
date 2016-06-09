@@ -30,6 +30,7 @@ export TERM=xterm-256color
 # git
 
 alias gs="git status"
+alias gds="git diff --staged"
  
 # prompt
 
