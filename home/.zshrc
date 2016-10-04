@@ -35,3 +35,8 @@ alias gds="git diff --staged"
 # prompt
 
 PS1="%F{245}%~ \$ %f" 
+
+# completion 
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+setopt menu_complete
