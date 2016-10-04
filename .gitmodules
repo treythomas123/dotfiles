@@ -53,3 +53,6 @@
 [submodule "home/.config/nvim/bundle/vim-jsx"]
 	path = home/.config/nvim/bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx
+[submodule "home/.config/nvim/bundle/vim-scala"]
+	path = home/.config/nvim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala
