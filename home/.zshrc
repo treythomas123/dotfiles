@@ -19,6 +19,9 @@ path=( $HOME/.npm-packages/bin $path )
 path=( ./node_modules/.bin $path )
 NODE_PATH="$HOME/.npm-packages/lib/node_modules:$NODE_PATH" 
 
+# go
+export GOPATH=$HOME
+
 # vim 
  
 set -o vi  
