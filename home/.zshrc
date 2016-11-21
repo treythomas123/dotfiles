@@ -35,7 +35,7 @@ alias gds="git diff --staged"
  
 # prompt
 
-PS1="%F{245}%~ \$ %f" 
+PS1="%K{238} %F{252}%~ %k%f%F{238} %f"
 
 # completion 
 
