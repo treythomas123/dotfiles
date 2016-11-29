@@ -30,3 +30,8 @@ nnoremap <leader>f :Unite file -start-insert<cr>
 
 " buffer switching
 nnoremap <leader>b :Unite buffer -quick-match<cr>
+
+" Echo the highlight class under the cursor
+nnoremap <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
