@@ -12,7 +12,7 @@ LuciusDarkHighContrast
 " tweak colorscheme
 hi LineNr guifg=#666666 guibg=234
 hi VertSplit guifg=#666666 guibg=236
-hi Search guibg=#7accef
+hi Search guibg=#666666 guifg=#eeeeee
 hi Pmenu guibg=#555555 guifg=#cccccc
 hi MatchParen guifg=#ffffff guibg=bg
 hi Brace guifg=#aaaaaa guibg=bg
