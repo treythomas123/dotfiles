@@ -62,3 +62,6 @@
 [submodule "home/.config/nvim/bundle/typescript-vim"]
 	path = home/.config/nvim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule "home/.config/nvim/bundle/editorconfig-vim"]
+	path = home/.config/nvim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
