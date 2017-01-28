@@ -1,3 +1,3 @@
 let g:neomake_typescript_enabled_makers = []
 
-set shiftwidth=2
+setlocal shiftwidth=2
