@@ -1,5 +1,6 @@
 syntax on                  " syntax highlighting
 set number                 " show line numbers
+set nowrap                 " don't wrap long lines
 
 let g:airline_powerline_fonts = 1
 
