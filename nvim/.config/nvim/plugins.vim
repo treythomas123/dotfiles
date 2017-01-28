@@ -6,6 +6,8 @@ set completeopt-=preview
 " Neomake
 autocmd! BufWritePost * Neomake
 
+" Git Gutter
+let g:gitgutter_sign_column_always = 1
 
 " Airline
 let g:airline_section_b = '%{expand("%:h")}'
