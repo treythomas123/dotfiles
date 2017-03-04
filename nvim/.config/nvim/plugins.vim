@@ -13,3 +13,6 @@ let g:gitgutter_sign_column_always = 1
 let g:airline_section_b = '%{expand("%:h")}'
 let g:airline_section_c = '%t'
 let g:airline#extensions#default#layout = [ [ 'b', 'c' ], [ 'x', 'z', 'error', 'warning' ] ]
+
+" UltiSnips
+let g:UltiSnipsSnippetsDir = '~/.config/nvim/snips'

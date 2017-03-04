@@ -22,9 +22,6 @@ nnoremap <leader>w <c-w><c-w>
 " close window with leader-q
 nnoremap <leader>q <c-w>q
 
-" tab completion if popup menu is visible
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>".deoplete#mappings#close_popup() : "<Tab>"
-
 " file switching
 nnoremap <leader>f :Unite file -start-insert<cr>
 

@@ -15,5 +15,5 @@ hi LineNr guifg=#666666 guibg=234
 hi VertSplit guifg=#666666 guibg=236
 hi Search guibg=#666666 guifg=#eeeeee
 hi Pmenu guibg=#555555 guifg=#cccccc
-hi MatchParen guifg=#ffffff guibg=bg
+hi MatchParen guifg=#ffffff guibg=#222222
 hi Brace guifg=#aaaaaa guibg=bg
