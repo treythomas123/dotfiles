@@ -8,6 +8,7 @@ set nobackup               " don't create backup files while editing
 set noswapfile             " don't create swap files while editing
 set writebackup            " use backup when saving files
 set hidden                 " Allow switching buffers without saving
+set undofile               " persistent undo history
 
 " remove delay when exiting insert mode
 set ttimeoutlen=10
