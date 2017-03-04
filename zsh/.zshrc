@@ -1,6 +1,9 @@
 typeset -aU path
 path=( $HOME/bin $path )
 
+# untracked local environment vars
+source ~/.local.env
+
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
@@ -35,6 +38,8 @@ alias gs="git status"
 alias gds="git diff --staged"
 alias gdm="git diff master"
 alias gcof='f() { git checkout feature/$1 };f'
+alias ge-personal="git config user.email $PERSONAL_EMAIL"
+alias ge-work="git config user.email $WORK_EMAIL"
 
 # move multiple
 autoload -U zmv
