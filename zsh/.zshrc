@@ -20,8 +20,9 @@ export GOPATH=$HOME
 export PYTHONDONTWRITEBYTECODE=1
 
 # vi mode
-set -o vi
-bindkey -v '^?' backward-delete-char
+bindkey -v
+bindkey '^?' backward-delete-char
+bindkey '^Xh' _complete_help
 
 # vim
 alias v="nvim"
@@ -32,13 +33,27 @@ export TERM=xterm-256color
 # git
 alias gs="git status"
 alias gds="git diff --staged"
+alias gdm="git diff master"
+alias gcof='f() { git checkout feature/$1 };f'
+
+# move multiple
+autoload -U zmv
+alias mmv='noglob zmv -W'
 
 # prompt
 PS1="%K{235} %F{244}%~ %k%f%F{235} %f"
 
 # completion
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
 setopt menu_complete
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'w' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect '0' vi-beginning-of-line
+bindkey -M menuselect '$' vi-end-of-line
 
 # search command history with up/down
 bindkey "^[[A" history-beginning-search-backward
