@@ -71,3 +71,12 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "nvim/.config/nvim/bundle/ultisnips"]
+	path = nvim/.config/nvim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "nvim/.config/nvim/bundle/vim-snippets"]
+	path = nvim/.config/nvim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
+[submodule "nvim/.config/nvim/bundle/ensime-vim"]
+	path = nvim/.config/nvim/bundle/ensime-vim
+	url = https://github.com/ensime/ensime-vim
