@@ -80,3 +80,6 @@
 [submodule "nvim/.config/nvim/bundle/ensime-vim"]
 	path = nvim/.config/nvim/bundle/ensime-vim
 	url = https://github.com/ensime/ensime-vim
+[submodule "nvim/.config/nvim/bundle/vim-gitgutter"]
+	path = nvim/.config/nvim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
