@@ -17,3 +17,4 @@ hi Search guibg=#666666 guifg=#eeeeee
 hi Pmenu guibg=#555555 guifg=#cccccc
 hi MatchParen guifg=#ffffff guibg=#222222
 hi Brace guifg=#aaaaaa guibg=bg
+hi Normal guibg=NONE ctermbg=NONE
