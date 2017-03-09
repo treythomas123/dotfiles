@@ -4,6 +4,9 @@ path=( $HOME/bin $path )
 # untracked local environment vars
 source ~/.local.env
 
+# homebrew
+path=( /usr/local/bin $path ) 
+
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
