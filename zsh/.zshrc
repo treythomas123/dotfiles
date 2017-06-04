@@ -49,7 +49,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 
 # prompt
-PS1="%K{235} %F{244}%~ %k%f%F{235} %f"
+PS1="%K{234} %F{244}%~ %k%f%F{234} %f"
 
 # completion
 zstyle ':completion:*' menu select
