@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sql
+     html
      markdown
      javascript
      typescript
@@ -40,6 +42,7 @@ values."
      (scala :variables scala-auto-start-ensime t)
      (shell :variables
             shell-default-height 30
+            shell-default-term-shell "/bin/zsh"
             shell-default-position 'bottom)
      ;; auto-completion
      ;; better-defaults
@@ -133,11 +136,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Meslo LG M for Powerline"
+                               :size 12
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -304,6 +307,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   (push '(ensime . "melpa-stable") package-pinned-packages)
   (push '(helm . "melpa-stable") package-pinned-packages)
+  (custom-set-variables '(spacemacs-theme-custom-colors
+                          '(
+                            (bg1 . "#262626")
+                            (bg2 . "#222222")
+                            (bg3 . "#121212")
+                            (bg4 . "#080808")
+                            (comment-bg . nil)
+                            (func . "#8f94bc")
+                            (comment . "#8a9ea0")
+                            (keyword . "#888888")
+                            )))
   )
 
 (defun dotspacemacs/user-config ()
@@ -315,6 +329,24 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ensime-startup-notification nil)
   (editorconfig-mode 1)
+  (setq-default line-spacing 1)
+  (setq powerline-default-separator 'utf-8)
+  (setq ensime-sem-high-faces
+    '((var . scala-font-lock:var-face)
+      (val :inherit font-lock-constant-face :slant italic)
+      (varField . scala-font-lock:var-face)
+      (valField :inherit font-lock-constant-face :slant italic)
+      (functionCall . font-lock-function-name-face)
+      (operator . font-lock-keyword-face)
+      (param :slant italic)
+      (class . font-lock-type-face)
+      (trait :inherit font-lock-type-face :slant italic)
+      (object . font-lock-constant-face)
+      (package . font-lock-preprocessor-face)
+      (implicitConversion nil)
+      (implicitParams . (:strike-through "black"))
+      (deprecated :strike-through "dark gray")))
+  (setq ensime-implicit-gutter-icons nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -327,7 +359,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (tern sql-indent tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
