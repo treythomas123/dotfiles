@@ -42,6 +42,7 @@ values."
      helm
      emacs-lisp
      git
+     terraform
      (go :variables go-tab-width 4)
      (scala :variables scala-auto-start-ensime t)
      (shell :variables
@@ -57,6 +58,8 @@ values."
      ;; org
      ;; spell-checking
      ;; version-control
+     org
+     restclient
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -69,6 +72,9 @@ values."
      groovy-mode
      xkcd
      fireplace
+     thrift
+     prettier-js
+     atomic-chrome
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -320,28 +326,28 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (push '(helm . "melpa-stable") package-pinned-packages)
   (custom-set-variables '(spacemacs-theme-custom-colors
                           '(
-                            (act1 . "#222226")
-                            (act2 . "#3d4d7a")
+                            (act1 . "#1f1f1f")
+                            (act2 . "#151515")
                             (base . "#b2b2b2")
                             (base-dim . "#686868")
                             (bg1 . "#222222")
                             (bg2 . "#171717")
                             (bg3 . "#080808")
                             (bg4 . "#040404")
-                            (border . "#444444")
+                            (border . "#333333")
                             (cblk . "#cbc1d5")
                             (cblk-bg . "#2f2b33")
                             (cblk-ln . "#627591")
                             (cblk-ln-bg . "#273040")
                             (cursor . "#e3dedd")
-                            (const . "#4f97d7")
+                            (const . "#4fb7d7")
                             (comment . "#8a9ea0")
                             (comment-light . "#2aa1ae")
                             (comment-bg . nil)
-                            (comp . "#4f97d7")
-                            (err . "#e0211d")
-                            (func . "#6f94bc")
-                            (head1 . "#4f97d7")
+                            (comp . "#4fb7d7")
+                            (err . "#b00000")
+                            (func . "#3f94bc")
+                            (head1 . "#4fb7d7")
                             (head1-bg . "#293239")
                             (head2 . "#4dd474")
                             (head2-bg . "#293235")
@@ -355,13 +361,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
                             (lnum . "#44505c")
                             (mat . "#86dc2f")
                             (meta . "#9f8766")
-                            (str . "#4dd474")
+                            (str . "#0dc4a4")
                             (suc . "#86dc2f")
                             (ttip . "#9a9aba")
                             (ttip-sl . "#3e5079")
                             (ttip-bg . "#34323e")
-                            (type . "#ce537a")
-                            (var . "#7590db")
+                            (type . "#ffcc77")
+                            (var . "#35a0fb")
                             (war . "#dc752f")
                             )))
   )
@@ -404,6 +410,16 @@ you should place your code here."
   (setq helm-buffer-skip-remote-checking t)
   (add-hook 'prog-mode-hook 'rainbow-mode)
   (setq make-backup-files nil) ; stop creating ~ files
+  (setq spaceline-minor-modes-p nil)
+  (setq spaceline-buffer-encoding-abbrev-p nil)
+  (setq spaceline-buffer-size-p nil)
+  (setq spaceline-buffer-position-p nil)
+  (setq spaceline-window-number-p nil)
+  (setq spaceline-persp-name-p nil)
+  (setq spaceline-workspace-number-p nil)
+  (setq spaceline-evil-state-p nil)
+  (setq spaceline-version-control-p nil)
+  (setq helm-buffer-max-length 35)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -414,34 +430,35 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(org-agenda-files (quote ("~/Dropbox/org/refile-beorg.org")))
  '(package-selected-packages
    (quote
-    (fireplace xkcd helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-web web-completion-data company-tern dash-functional company-statistics company-go auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode nginx-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby yaml-mode groovy-mode rainbow-mode rainbow-identifiers color-identifiers-mode all-the-icons memoize font-lock+ tern sql-indent tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (terraform-mode hcl-mode org-mime ghub let-alist web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode atomic-chrome websocket prettier-js thrift yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot puppet-mode fireplace xkcd helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-web web-completion-data company-tern dash-functional company-statistics company-go auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode nginx-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby yaml-mode groovy-mode rainbow-mode rainbow-identifiers color-identifiers-mode all-the-icons memoize font-lock+ tern sql-indent tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(paradox-github-token t)
  '(spacemacs-theme-custom-colors
    (quote
-    ((act1 . "#222226")
-     (act2 . "#3d4d7a")
+    ((act1 . "#1f1f1f")
+     (act2 . "#151515")
      (base . "#b2b2b2")
      (base-dim . "#686868")
      (bg1 . "#222222")
      (bg2 . "#171717")
      (bg3 . "#080808")
      (bg4 . "#040404")
-     (border . "#444444")
+     (border . "#333333")
      (cblk . "#cbc1d5")
      (cblk-bg . "#2f2b33")
      (cblk-ln . "#627591")
      (cblk-ln-bg . "#273040")
      (cursor . "#e3dedd")
-     (const . "#4f97d7")
+     (const . "#4fb7d7")
      (comment . "#8a9ea0")
      (comment-light . "#2aa1ae")
      (comment-bg)
-     (comp . "#4f97d7")
-     (err . "#e0211d")
-     (func . "#6f94bc")
-     (head1 . "#4f97d7")
+     (comp . "#4fb7d7")
+     (err . "#b00000")
+     (func . "#3f94bc")
+     (head1 . "#4fb7d7")
      (head1-bg . "#293239")
      (head2 . "#4dd474")
      (head2-bg . "#293235")
@@ -455,13 +472,13 @@ you should place your code here."
      (lnum . "#44505c")
      (mat . "#86dc2f")
      (meta . "#9f8766")
-     (str . "#4dd474")
+     (str . "#0dc4a4")
      (suc . "#86dc2f")
      (ttip . "#9a9aba")
      (ttip-sl . "#3e5079")
      (ttip-bg . "#34323e")
-     (type . "#ce537a")
-     (var . "#7590db")
+     (type . "#ffcc77")
+     (var . "#35a0fb")
      (war . "#dc752f")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
