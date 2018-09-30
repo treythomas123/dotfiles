@@ -45,6 +45,9 @@ alias gcof='f() { git checkout feature/$1 };f'
 alias ge-personal="git config user.email $PERSONAL_EMAIL"
 alias ge-work="git config user.email $WORK_EMAIL"
 
+# kubectl
+alias k="kubectl"
+
 # move multiple
 autoload -U zmv
 alias mmv='noglob zmv -W'
