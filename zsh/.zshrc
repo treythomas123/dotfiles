@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 # node
 path=( $HOME/.npm-packages/bin $path )
 path=( ./node_modules/.bin $path )
+NPM_PACKAGES="${HOME}/.npm-packages"
 
 # go
 export GOPATH=$HOME
