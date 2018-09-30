@@ -419,6 +419,7 @@ you should place your code here."
   (setq spaceline-evil-state-p nil)
   (setq spaceline-version-control-p nil)
   (setq helm-buffer-max-length 35)
+  (setq create-lockfiles nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
