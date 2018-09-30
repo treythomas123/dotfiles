@@ -7,3 +7,4 @@ ensime.sbt
 .idea
 application.conf
 logback.xml
+flycheck_*
