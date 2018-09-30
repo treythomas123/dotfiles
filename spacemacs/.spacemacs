@@ -420,7 +420,6 @@ you should place your code here."
   (setq spaceline-version-control-p nil)
   (setq helm-buffer-max-length 35)
   (setq create-lockfiles nil)
-  (setq sql-mysql-login-params (append sql-mysql-login-params '(port)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
