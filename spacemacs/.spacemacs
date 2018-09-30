@@ -70,8 +70,6 @@ values."
      editorconfig
      all-the-icons
      groovy-mode
-     xkcd
-     fireplace
      thrift
      prettier-js
      atomic-chrome
