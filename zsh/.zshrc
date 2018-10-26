@@ -47,6 +47,7 @@ alias ge-work="git config user.email $WORK_EMAIL"
 
 # kubectl
 alias k="kubectl"
+alias mk="minikube"
 
 # move multiple
 autoload -U zmv
