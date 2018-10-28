@@ -19,6 +19,8 @@ source $ZSH/oh-my-zsh.sh
 path=( $HOME/.npm-packages/bin $path )
 path=( ./node_modules/.bin $path )
 NPM_PACKAGES="${HOME}/.npm-packages"
+NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
 # go
 export GOPATH=$HOME
@@ -26,15 +28,16 @@ export GOPATH=$HOME
 # python
 export PYTHONDONTWRITEBYTECODE=1
 
+# tmux
+alias t="tmux"
+
 # vi mode
 bindkey -v
 bindkey '^?' backward-delete-char
 bindkey '^Xh' _complete_help
 
 # vim
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
+alias v="vim"
 export TERM=xterm-256color
 
 # git
