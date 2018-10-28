@@ -433,6 +433,10 @@ you should place your code here."
 
   (add-to-list 'flycheck-checkers 'angular-lint)
   (add-to-list 'flycheck-global-modes 'ng2-ts-mode)
+
+  (add-hook 'web-mode-hook (lambda ()
+    (let ((angular-project-root (locate-dominating-file buffer-file-name "angular.json")))
+      (if angular-project-root (ng2-html-mode) (message "%s" "This file is not in an Angular project")))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
