@@ -413,17 +413,10 @@ you should place your code here."
   (setq helm-buffer-skip-remote-checking t)
   (add-hook 'prog-mode-hook 'rainbow-mode)
   (setq make-backup-files nil) ; stop creating ~ files
-  (setq spaceline-minor-modes-p nil)
-  (setq spaceline-buffer-encoding-abbrev-p nil)
-  (setq spaceline-buffer-size-p nil)
-  (setq spaceline-buffer-position-p nil)
-  (setq spaceline-window-number-p nil)
-  (setq spaceline-persp-name-p nil)
-  (setq spaceline-workspace-number-p nil)
-  (setq spaceline-evil-state-p nil)
-  (setq spaceline-version-control-p nil)
   (setq helm-buffer-max-length 35)
   (setq create-lockfiles nil)
+  (spaceline-compile '(projectile-root buffer-id process) '(major-mode line-column))
+
 
   (flycheck-define-checker angular-lint
     "Run ng lint"
