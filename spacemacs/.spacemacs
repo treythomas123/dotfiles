@@ -77,6 +77,7 @@ values."
      prettier-js
      atomic-chrome
      (ng2-mode :location (recipe :fetcher github :repo "treythomas123/ng2-mode" :branch "feature/open-spec"))
+     (typescript-mode :location (recipe :fetcher github :repo "treythomas123/typescript.el" :branch "feature/concise-arrow-indentation"))
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
