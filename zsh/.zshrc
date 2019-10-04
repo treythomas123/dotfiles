@@ -1,11 +1,8 @@
 typeset -aU path
 path=( $HOME/bin $path )
 
-# untracked local environment vars
-source ~/.local.env
-
 # homebrew
-path=( /usr/local/bin $path ) 
+path=( /usr/local/bin $path )
 
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
@@ -20,13 +17,17 @@ path=( $HOME/.npm-packages/bin $path )
 path=( ./node_modules/.bin $path )
 NPM_PACKAGES="${HOME}/.npm-packages"
 NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+alias nvminit='. "/usr/local/opt/nvm/nvm.sh"'
 
 # go
 export GOPATH=$HOME
 
 # python
 export PYTHONDONTWRITEBYTECODE=1
+
+# ruby
+path=( /usr/local/lib/ruby/gems/2.6.0/bin $path )
+path=( /usr/local/opt/ruby/bin $path )
 
 # tmux
 alias t="tmux"
@@ -52,6 +53,9 @@ alias ge-work="git config user.email $WORK_EMAIL"
 alias k="kubectl"
 alias mk="minikube"
 
+# terraform
+alias tf="terraform"
+
 # move multiple
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -70,7 +74,12 @@ bindkey -M menuselect 'w' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect '0' vi-beginning-of-line
 bindkey -M menuselect '$' vi-end-of-line
+autoload bashcompinit
+bashcompinit
 
 # search command history with up/down
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# untracked local environment vars
+source ~/.local.env
