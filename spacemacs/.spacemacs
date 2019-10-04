@@ -33,7 +33,7 @@ values."
    '(
      csv
      html
-     angular
+     ;; angular
      python
      nginx
      ruby
@@ -46,6 +46,7 @@ values."
      emacs-lisp
      git
      terraform
+     puppet
      (go :variables go-tab-width 4)
      (scala :variables scala-auto-start-ensime t)
      (shell :variables
@@ -76,7 +77,8 @@ values."
      thrift
      prettier-js
      atomic-chrome
-     (ng2-mode :location (recipe :fetcher github :repo "treythomas123/ng2-mode" :branch "feature/open-spec"))
+     string-inflection
+     ;; (ng2-mode :location (recipe :fetcher github :repo "treythomas123/ng2-mode" :branch "feature/open-spec"))
      (typescript-mode :location (recipe :fetcher github :repo "treythomas123/typescript.el" :branch "feature/concise-arrow-indentation"))
      )
    ;; A list of packages that cannot be updated.
@@ -415,7 +417,15 @@ you should place your code here."
   (setq make-backup-files nil) ; stop creating ~ files
   (setq helm-buffer-max-length 35)
   (setq create-lockfiles nil)
+  (set-face-bold-p 'bold nil)
   (spaceline-compile '(projectile-root buffer-id process) '(major-mode line-column))
+  (setq sbt:prefer-nested-projects t)
+  (setq sh-basic-offset 2)
+  (setq groovy-indent-offset 2)
+  (add-hook 'terraform-mode-hook 'terraform-format-on-save-mode)
+
+  (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
+
 
 
   (flycheck-define-checker angular-lint
@@ -437,6 +447,9 @@ you should place your code here."
   (add-hook 'web-mode-hook (lambda ()
     (let ((angular-project-root (locate-dominating-file buffer-file-name "angular.json")))
       (if angular-project-root (ng2-html-mode) (message "%s" "This file is not in an Angular project")))))
+
+  (global-set-key (kbd "C-`") 'compare-windows)
+  (setq-default ediff-forward-word-function 'forward-char)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -450,7 +463,7 @@ you should place your code here."
  '(org-agenda-files (quote ("~/Dropbox/org/refile-beorg.org")))
  '(package-selected-packages
    (quote
-    (csv-mode lsp-mode ng2-mode treepy graphql terraform-mode hcl-mode org-mime ghub let-alist web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode atomic-chrome websocket prettier-js thrift yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot puppet-mode fireplace xkcd helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-web web-completion-data company-tern dash-functional company-statistics company-go auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode nginx-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby yaml-mode groovy-mode rainbow-mode rainbow-identifiers color-identifiers-mode all-the-icons memoize font-lock+ tern sql-indent tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (lv transient string-inflection csv-mode lsp-mode ng2-mode treepy graphql terraform-mode hcl-mode org-mime ghub let-alist web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode atomic-chrome websocket prettier-js thrift yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot puppet-mode fireplace xkcd helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-web web-completion-data company-tern dash-functional company-statistics company-go auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode nginx-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby yaml-mode groovy-mode rainbow-mode rainbow-identifiers color-identifiers-mode all-the-icons memoize font-lock+ tern sql-indent tide typescript-mode flycheck editorconfig web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode mmm-mode markdown-toc markdown-mode gh-md xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help noflet ensime company yasnippet sbt-mode scala-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(paradox-github-token t)
  '(spacemacs-theme-custom-colors
    (quote
