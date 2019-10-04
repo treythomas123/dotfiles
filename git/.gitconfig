@@ -10,7 +10,7 @@
 	smudge = git lfs smudge %f
 	required = true
 [core]
-	editor = /usr/local/bin/nvim
+	editor = /usr/bin/vim
 	pager = less -x1,5
 	excludesfile = /Users/trey/.gitignore
 [url "git@bitbucket.org:"]
