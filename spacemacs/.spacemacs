@@ -429,6 +429,10 @@ you should place your code here."
 
   (setq org-startup-indented t)
 
+  (defun sql-format-buffer () (interactive)
+    (shell-command-on-region (point-min) (point-max) "unibeautify -l SQL | grep ." nil t))
+  (spacemacs/set-leader-keys-for-major-mode 'sql-mode "f" 'sql-format-buffer)
+
   (require 'org-tempo) ;; fix tab-expansion of "<s" in org-mode
 
   (flycheck-define-checker angular-lint
