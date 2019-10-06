@@ -407,6 +407,7 @@ you should place your code here."
   (setq-default flycheck-scalastylerc "scalastyle-config.xml")
   (require 'helm-bookmark) ;; get rid of warning https://github.com/syl20bnr/spacemacs/issues/9549
   (setq neo-theme 'icons)
+  (setq neo-banner-message nil)
   (setq-default js-indent-level 2)
   (setq-default js2-basic-offset 2)
   (setq-default js2-mode-show-parse-errors nil)
