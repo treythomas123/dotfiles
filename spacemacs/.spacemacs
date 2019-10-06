@@ -431,6 +431,8 @@ you should place your code here."
     (concat ":m '>+1" (kbd "RET") "gv=gv"))
   (define-key evil-visual-state-map "\C-K"
     (concat ":m '<-2" (kbd "RET") "gv=gv"))
+  (setq-default evil-kill-on-visual-paste nil)
+
   (setq org-startup-indented t)
 
   (defun sql-format-buffer () (interactive)
