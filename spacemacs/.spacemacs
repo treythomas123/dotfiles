@@ -427,6 +427,7 @@ you should place your code here."
 
   (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
 
+  (setq org-startup-indented t)
 
   (require 'org-tempo) ;; fix tab-expansion of "<s" in org-mode
 
