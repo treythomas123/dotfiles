@@ -423,6 +423,7 @@ you should place your code here."
   (setq sh-basic-offset 2)
   (setq groovy-indent-offset 2)
   (add-hook 'terraform-mode-hook 'terraform-format-on-save-mode)
+  (setq org-confirm-babel-evaluate nil)
 
   (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
 
