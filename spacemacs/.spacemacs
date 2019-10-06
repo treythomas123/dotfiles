@@ -428,6 +428,7 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
 
 
+  (require 'org-tempo) ;; fix tab-expansion of "<s" in org-mode
 
   (flycheck-define-checker angular-lint
     "Run ng lint"
