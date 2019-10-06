@@ -427,6 +427,10 @@ you should place your code here."
 
   (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
 
+  (define-key evil-visual-state-map "\C-J"
+    (concat ":m '>+1" (kbd "RET") "gv=gv"))
+  (define-key evil-visual-state-map "\C-K"
+    (concat ":m '<-2" (kbd "RET") "gv=gv"))
   (setq org-startup-indented t)
 
   (defun sql-format-buffer () (interactive)
