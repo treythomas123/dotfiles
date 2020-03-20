@@ -50,7 +50,10 @@ This function should only modify configuration layer settings."
      terraform
      puppet
      (go :variables go-tab-width 4)
-     (scala :variables scala-auto-start-ensime t)
+     (scala :variables
+            scala-auto-start-ensime t
+            scala-backend 'scala-metals
+            )
      (shell :variables
             shell-default-height 30
             shell-default-shell 'eshell
@@ -185,6 +188,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
 
+   ;; If non-nil show the version string in the Spacemacs buffer. It will
+   ;; appear as (spacemacs version)@(emacs version)
+   ;; (default t)
+   dotspacemacs-startup-buffer-show-version t
+
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -230,7 +238,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(custom :separator butt :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -460,6 +468,13 @@ It should only modify the values of Spacemacs settings."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+
+   ;; If non nil activate `clean-aindent-mode' which tries to correct
+   ;; virtual indentation of simple modes. This can interfer with mode specific
+   ;; indent handling like has been reported for `go-mode'.
+   ;; If it does deactivate it here.
+   ;; (default t)
+   dotspacemacs-use-clean-aindent-mode t
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
@@ -720,6 +735,7 @@ before packages are loaded."
   ;;     (if angular-project-root (ng2-html-mode) (message "%s" "This file is not in an Angular project")))))
 
   (global-set-key (kbd "C-`") 'compare-windows)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "xh" 'org-toggle-heading)
   (setq-default ediff-forward-word-function 'forward-char)
   )
 
