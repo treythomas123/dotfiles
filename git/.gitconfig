@@ -1,5 +1,6 @@
 [user]
 	name = Trey Thomas
+        email = trey.thomas@netapp.com
 	useConfigOnly = true
 [push]
 	default = current

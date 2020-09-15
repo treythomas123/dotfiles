@@ -1,6 +1,9 @@
 typeset -aU path
 path=( $HOME/bin $path )
 
+# untracked local environment vars
+source ~/.local.env
+
 # homebrew
 path=( /usr/local/bin $path )
 
@@ -24,6 +27,9 @@ export GOPATH=$HOME
 
 # python
 export PYTHONDONTWRITEBYTECODE=1
+path=( /Users/trey/Library/Python/3.7/bin $path )
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # ruby
 path=( /usr/local/lib/ruby/gems/2.6.0/bin $path )
@@ -81,5 +87,3 @@ bashcompinit
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-# untracked local environment vars
-source ~/.local.env

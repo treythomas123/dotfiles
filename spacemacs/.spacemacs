@@ -238,7 +238,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(custom :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -503,13 +503,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (defun spaceline-custom-theme (&rest additional-segments)
     "My custom spaceline theme."
     (spaceline-compile
-      '(projectile-root buffer-id process)
-      '(major-mode line-column ,@additional-segments))
+      '(projectile-root relative-path buffer-id process)
+      '(org-clock selection-info major-mode line-column ,@additional-segments))
     (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
-  ;; (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-  ;; (push '(ensime . "melpa-stable") package-pinned-packages)
-  ;; (push '(helm . "melpa-stable") package-pinned-packages)
   (custom-set-variables '(spacemacs-theme-custom-colors
                           '(
                             (act1 . "#1f1f1f")
@@ -604,51 +601,9 @@ before packages are loaded."
 
   (require 'treemacs-persistence) ;; needed to avoid error about void treemacs--persist
 
+  (setq lsp-signature-auto-activate nil) ;; don't automatically pop up help at the bottom in LSP mode
+  (setq lsp-ui-doc-enable nil) ;; don't show hovering doc window for what's under the cursor (gets in the way and slows down movement)
 
-
-  ;; (require 'all-the-icons)
-  ;; (let ((all-the-icons-default-adjust 0)
-  ;;           (tab-width 1))
-  ;;       ;; Root icon
-  ;;       (setq treemacs-icon-root-png
-  ;;             (concat (all-the-icons-octicon "bug" :height 0.8 :v-adjust -0.2)  " ")))
-
-  ;;       ;; File icons
-  ;;       (setq treemacs-icon-open-png
-  ;;             (concat
-  ;;              (all-the-icons-octicon "chevron-down" :height 0.8 :v-adjust 0.1)
-  ;;              "\t"
-  ;;              (all-the-icons-octicon "file-directory" :v-adjust 0)
-  ;;              "\t")
-  ;;             treemacs-icon-closed-png
-  ;;             (concat
-  ;;              (all-the-icons-octicon "chevron-right" :height 0.8
-  ;;                                     :v-adjust 0.1 :face 'font-lock-doc-face)
-  ;;              "\t"
-  ;;              (all-the-icons-octicon "file-directory" :v-adjust 0 :face 'font-lock-doc-face)
-  ;;              "\t"))
-  ;;       ;; File type icons
-  ;;       (setq treemacs-icons-hash (make-hash-table :size 200 :test #'equal)
-  ;;             treemacs-icon-fallback (concat
-  ;;                                     "\t\t"
-  ;;                                     (all-the-icons-faicon "file-o" :face 'all-the-icons-dsilver
-  ;;                                                           :height 0.8 :v-adjust 0.0)
-  ;;                                     "\t")
-  ;;             treemacs-icon-text treemacs-icon-fallback)
-
-  ;;       (dolist (item all-the-icons-icon-alist)
-  ;;         (let* ((extension (car item))
-  ;;                (func (cadr item))
-  ;;                (args (append (list (caddr item)) '(:v-adjust -0.05) (cdddr item)))
-  ;;                (icon (apply func args))
-  ;;                (key (s-replace-all '(("^" . "") ("\\" . "") ("$" . "") ("." . "")) extension))
-  ;;                (value (concat "\t\t" icon "\t")))
-  ;;           (unless (ht-get treemacs-icons-hash (s-replace-regexp "\\?" "" key))
-  ;;             (ht-set! treemacs-icons-hash (s-replace-regexp "\\?" "" key) value))
-  ;;           (unless (ht-get treemacs-icons-hash (s-replace-regexp ".\\?" "" key))
-  ;;             (ht-set! treemacs-icons-hash (s-replace-regexp ".\\?" "" key) value)))))
-
-  (add-hook 'neotree-mode-hook (lambda () (setq-local mode-line-format nil)))
   (setq-default js-indent-level 2)
   (setq-default js2-basic-offset 2)
   (setq-default js2-mode-show-parse-errors nil)
@@ -662,29 +617,11 @@ before packages are loaded."
   (setq helm-buffer-max-length 35)
   (setq create-lockfiles nil)
   (set-face-bold-p 'bold nil)
-  ;; (spaceline-define-segment relative-path
-  ;;   (file-relative-name buffer-file-name (projectile-project-root)))
-  ;; (spaceline-define-segment region-size
-  ;;   (when (eq evil-state 'visual)
-  ;;     (string-join
-  ;;      (
-  ;;       list
-  ;;       (call-interactively 'count-words-region)
-  ;;       (format "%d" (point))
-  ;;       (format "%d" (mark))
-  ;;      )
-  ;;      " "
-  ;;      )
-  ;;     )
 
-    ;; line count is off depending on where the end of the region is
-
-
-      ;; (cond
-      ;;  ((eq evil-visual-selection 'char) (format "%d C" (+ 1 (abs (- (point) (mark))))))
-      ;;  ((eq evil-visual-selection 'line) (format "%s L" (max 1 (count-lines (point) (mark)))))
-      ;;  ))
-    ;; :face highlight-face)
+  (spaceline-define-segment relative-path
+    (if buffer-file-name
+        (file-relative-name (file-name-directory (directory-file-name buffer-file-name)) (projectile-project-root))
+        nil))
 
   (setq sbt:prefer-nested-projects t)
   (setq sh-basic-offset 2)
