@@ -52,6 +52,7 @@ alias ge-work="git config user.email $WORK_EMAIL"
 
 # kubectl
 alias k="kubectl"
+alias kns="kubectl config set-context --current --namespace"
 alias mk="minikube"
 source <(kubectl completion zsh)
 
