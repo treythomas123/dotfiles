@@ -38,6 +38,7 @@ bindkey '^Xh' _complete_help
 # vim
 alias v="vim"
 export TERM=xterm-256color
+export EDITOR=vim
 
 # git
 alias gs="git status"
