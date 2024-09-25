@@ -22,13 +22,14 @@ alias nvminit='. "/usr/local/opt/nvm/nvm.sh"'
 
 # go
 export GOPATH=$HOME
+path=( /opt/homebrew/opt/go@1.23/bin $path )
+
+# python
+path=( /opt/homebrew/opt/python@3.10/libexec/bin $path )
 
 # ruby
-path=( /usr/local/lib/ruby/gems/2.7.0/bin $path )
-path=( /usr/local/opt/ruby/bin $path )
-
-# tmux
-alias t="tmux"
+path=( /opt/homebrew/opt/ruby/bin $path )
+path=( /opt/homebrew/lib/ruby/gems/3.1.0/bin $path )
 
 # vi mode
 bindkey -v
