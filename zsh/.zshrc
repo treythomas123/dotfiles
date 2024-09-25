@@ -1,9 +1,6 @@
 typeset -aU path
 path=( $HOME/bin $path )
 
-# untracked local environment vars
-source ~/.local.env
-
 # homebrew
 path=( /usr/local/bin $path )
 
@@ -145,3 +142,6 @@ jqlogsall() {
     ) catch $line'
 }
 
+
+# untracked local environment vars
+source ~/.local.env
