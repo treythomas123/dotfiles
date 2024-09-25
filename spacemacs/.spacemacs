@@ -694,7 +694,63 @@ before packages are loaded."
   (setq create-lockfiles nil)
 
   ;; magit
-  (remove-hook 'magit-refs-sections-hook 'magit-insert-tags) ;; try to speed up magit status by not showing tags?
+  (setq git-magit-status-fullscreen t)
+
+  (defun my-magit-insert-status-headers ()
+    "Insert headers appropriate for the current status buffer."
+    (magit-insert-error-header)
+    (magit-insert-diff-filter-header)
+    (magit-insert-head-branch-header)
+    (magit-insert-upstream-branch-header)
+    (magit-insert-push-branch-header)
+    ;;magit-insert-tags-header) ;; removed tags because they were slowing down status of large repo
+    )
+
+  (defun my-insert-newline ()
+    "Insert a newline character."
+    (insert "\n"))
+
+  ;; Just show the count, not all the details. Details were slow because of lots of tags in large repo.
+  (defun my-magit-insert-unpushed-to-pushremote ()
+    "Insert a section showing the number of commits not pushed to the push-remote."
+    (when-let* ((target (magit-get-push-branch))
+                (range  (concat target "..")))
+      (let ((count (string-to-number (shell-command-to-string (concat "git rev-list --count " range)))))
+        (when (> count 0)
+          (magit-insert-section (unpushed)
+            (magit-insert-heading (format "Unpushed commits (to %s): %d" target count)))
+          (insert "\n")))))  ;; Insert newline after the section
+
+  (setq magit-status-sections-hook
+    '(my-magit-insert-status-headers
+      my-insert-newline
+      my-magit-insert-unpushed-to-pushremote
+      magit-insert-merge-log
+      magit-insert-rebase-sequence
+      magit-insert-am-sequence
+      magit-insert-sequencer-sequence
+      magit-insert-bisect-output
+      magit-insert-bisect-rest
+      magit-insert-bisect-log
+      magit-insert-untracked-files
+      magit-insert-unstaged-changes
+      magit-insert-staged-changes
+      magit-insert-stashes
+      ;; magit-insert-unpushed-to-upstream-or-recent
+      ;; magit-insert-unpulled-from-pushremote
+      ;; magit-insert-unpulled-from-upstream
+      ))
+
+  ;; projectile
+  (with-eval-after-load 'projectile
+    (setq projectile-project-root-files-bottom-up '(".projectile" "go.mod" ".git")))
+  (with-eval-after-load 'projectile
+    (projectile-register-project-type 'go '("go.mod")
+                                      :project-file "go.mod"
+                                      :compile "go build ./..."
+                                      :test "go test ./..."
+                                      :run "go run ./..."
+                                      :test-suffix "_test.go"))
 
   ;; Additional keybindings
   (global-set-key (kbd "C-`") 'compare-windows)
