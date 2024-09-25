@@ -2,7 +2,7 @@ typeset -aU path
 path=( $HOME/bin $path )
 
 # homebrew
-path=( /usr/local/bin $path )
+path=( /opt/homebrew/bin $path )
 
 # oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
