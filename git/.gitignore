@@ -1,10 +1,5 @@
 .DS_Store
 .agignore
-.ensime
-ensime.sbt
-.ensime_cache/
-.sbt-hydra-history
 .idea
-application.conf
-logback.xml
 flycheck_*
+.projectile
